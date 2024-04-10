@@ -24,7 +24,7 @@ public class PessoaBean implements Serializable {
 	public String adicionar() {
 		pessoas.add(pessoa);
 		pessoa = new Pessoa();
-		System.out.println("Tamanho da lista: " + pessoas.size());
+		//System.out.println("Tamanho da lista: " + pessoas.size());
 		return null;
 	}
 
