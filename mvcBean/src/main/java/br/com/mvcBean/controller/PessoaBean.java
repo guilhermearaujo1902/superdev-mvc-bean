@@ -21,13 +21,22 @@ public class PessoaBean implements Serializable {
 	
 	List<Pessoa> pessoas = new ArrayList<Pessoa>();
 	
+	private int idSequencia = 1;
+	
 	public String adicionar() {
+		pessoa.setId(this.gerarId());
 		pessoas.add(pessoa);
 		pessoa = new Pessoa();
 		//System.out.println("Tamanho da lista: " + pessoas.size());
 		return null;
 	}
+	
+	private int gerarId() {
+		return idSequencia++;
+	}
+	
 
+	// Getter and Setter
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
