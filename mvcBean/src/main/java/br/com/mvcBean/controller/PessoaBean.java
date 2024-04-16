@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -27,8 +28,33 @@ public class PessoaBean implements Serializable {
 		pessoa.setId(this.gerarId());
 		pessoas.add(pessoa);
 		pessoa = new Pessoa();
-		//System.out.println("Tamanho da lista: " + pessoas.size());
-		return null;
+		return "/pessoa/lista.xhtml";
+	}
+	
+	public String editar() {
+		int index = pessoas.indexOf(pessoa);
+		Pessoa p = pessoa;
+		
+		pessoas.remove(pessoa);
+		pessoas.add(index,p);
+		
+		pessoa = new Pessoa();
+		
+		return "/pessoa/lista.xhtml";
+	}
+	
+	public String telaEdicao() {
+		System.out.println("telaEdicao");
+		return "/pessoa/editar.xhtml";
+	}
+	
+	public void carregarEdicao(ActionEvent event) {
+		System.out.println("telaEdicao");
+		Pessoa p = (Pessoa) event.getComponent().getAttributes().get("pessoa");
+		
+		pessoa.setId(p.getId());
+		pessoa.setNome(p.getNome());
+		pessoa.setProfissao(p.getProfissao());
 	}
 	
 	private int gerarId() {

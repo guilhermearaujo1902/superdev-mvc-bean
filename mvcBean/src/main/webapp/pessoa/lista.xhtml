@@ -28,6 +28,19 @@
 			#{pessoa.profissao}
 		</h:column>
 		
+		<h:column>
+			<h:commandButton 
+				value="Editar"
+				action="#{pessoaBean.telaEdicao}" 
+				actionListener="#{pessoaBean.carregarEdicao}">
+				<f:attribute name="pessoa" value="#{pessoa}"/>
+			</h:commandButton>
+		</h:column>
+		
+		<h:column>
+			<h:commandButton value="Apagar"/>
+		</h:column>
+		
 	</h:dataTable>
 
 </h:body>
